@@ -25,7 +25,7 @@ SECRET_KEY = 'g+-ajxf-bdtp7#t*t-x0ft*^18-x1%l)3kkcq%7@lc2up3#3ob'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,18 +39,22 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # otres
-
     'rest_framework',
+    'django_filters',
+    'corsheaders',
 
     # app
-    'app.compras',
     'app.insumos',
-    'app.operacion',
+    'app.personas',
     'app.pedido',
-    'app.productos',
+    'app.preparacion',
+    'app.produccion',
+    'app.facturas',
 ]
 
+
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -59,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'kendra.urls'
 
@@ -120,7 +125,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Bogota'
 
 USE_I18N = True
 
@@ -133,3 +138,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
